@@ -1,0 +1,105 @@
+# Without this role & rolebinding the ArgoCD application controller is not allowed
+# to create common resources in the application namespaces
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: argocd-application-controller-rbac-custom
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - resourcequotas
+  - secrets
+  - serviceaccounts
+  - services
+  - endpoints
+  verbs:
+  - '*'
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  - statefulsets
+  verbs:
+  - '*'
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  verbs:
+  - '*'
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - '*'
+- apiGroups:
+  - route.openshift.io
+  resources:
+  - routes
+  - routes/custom-host
+  verbs:
+  - '*'
+- apiGroups:
+  - broker.amq.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
+- apiGroups:
+  - argoproj.io
+  resources:
+  - argocds
+  verbs:
+  - '*'
+- apiGroups:
+  - kubernetes-client.io
+  resources:
+  - externalsecrets
+  verbs:
+  - '*'
+- apiGroups:
+  - monitoring.coreos.com
+  resources:
+  - podmonitors
+  - prometheusrules
+  - servicemonitors
+  verbs:
+  - '*'
+- apiGroups:
+  - integreatly.org
+  resources:
+  - grafanas
+  - grafanadatasources
+  - grafanadashboards
+  - grafanafolders
+  - grafananotificationchannels
+  verbs:
+  - '*'
+- apiGroups:
+  - cert-manager.io
+  - external-secrets.io
+  - keycloak.org
+  - logging.openshift.io
+  - microcks.github.io
+  - operator.external-secrets.io
+  - skupper.io
+  - networking.k8s.io
+  resources:
+  - '*'
+  verbs:
+  - '*'
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: argocd-application-controller-rbac-custom
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: argocd-application-controller-rbac-custom
+subjects:
+- kind: ServiceAccount
+  name: openshift-gitops-argocd-application-controller
+  namespace: openshift-gitops
