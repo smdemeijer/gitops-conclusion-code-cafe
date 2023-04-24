@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/component: monster
     app.kubernetes.io/instance: monster
 spec:
-  replicas: 1
+  replicas: {{ .Values.monsterReplicas }}
   selector:
     matchLabels:
       deployment: monster

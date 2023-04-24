@@ -1,4 +1,5 @@
 namespace: dennisvandenboom
+monsterReplicas: 1
 images:
   monsterImage: image-registry.openshift-image-registry.svc:5000/doom-images/monster@sha256:ee3ccf1a93b1ea42f3caa9bb44dbf8bfd8a84a9d6585f6a204ef20cb72d16c64
   doomImage: image-registry.openshift-image-registry.svc:5000/doom-images/ocpdoom@sha256:b9f359ab56aa127256308380b8142acd036c4c5088da01750d8c92793daf5a27
