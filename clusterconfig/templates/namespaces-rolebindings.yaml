@@ -9,7 +9,7 @@ metadata:
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: {{ $user }}-monsters
+  name: {{ $user | lower }}-monsters
 
 ---
 kind: ClusterRoleBinding
