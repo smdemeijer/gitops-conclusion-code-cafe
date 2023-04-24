@@ -3,7 +3,7 @@
 kind: Namespace
 apiVersion: v1
 metadata:
-  name: {{ $user }}
+  name: {{ $user | lower }}
 
 ---
 kind: Namespace
