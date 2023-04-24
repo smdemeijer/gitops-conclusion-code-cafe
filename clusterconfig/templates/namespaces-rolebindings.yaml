@@ -19,12 +19,15 @@ metadata:
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: cluster-admin
+  name: admin
 subjects:
-- kind: User
-  name: {{ $user }}
-  namespace: {{ $user }}
-- kind: User
-  name: {{ $user }}
-  namespace: {{ $user }}-monsters
+- kind: Group
+  name: admins
 {{- end }}
+---
+kind: Group
+apiVersion: user.openshift.io/v1
+metadata:
+  name: admins
+users:
+{{ toYaml .Values.users | indent 2}}
