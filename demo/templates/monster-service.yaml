@@ -1,0 +1,18 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: monster
+  namespace: {{ .Values.namespace }}-monsters
+  labels:
+    app: monster
+    app.kubernetes.io/component: monster
+    app.kubernetes.io/instance: monster
+spec:
+  ports:
+    - name: 8080-tcp
+      protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+  selector:
+    deployment: monster

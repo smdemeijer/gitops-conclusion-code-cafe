@@ -1,0 +1,17 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: ocpdoom
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ocpdoom
+    app.kubernetes.io/component: ocpdoom
+    app.kubernetes.io/instance: ocpdoom
+spec:
+  ports:
+    - protocol: TCP
+      port: 5900
+      targetPort: 5900
+  type: ClusterIP
+  selector:
+    deployment: ocpdoom
