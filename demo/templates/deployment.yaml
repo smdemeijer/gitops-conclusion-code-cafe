@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/component: ocpdoom
     app.kubernetes.io/instance: ocpdoom
 spec:
-  replicas: 0
+  replicas: 1
   selector:
     matchLabels:
       deployment: ocpdoom
