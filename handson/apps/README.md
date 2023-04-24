@@ -1,0 +1,1 @@
+## Creëer je eigen folder onder deze apps folder, zodat dat als source folder voor jouw Argo CD Application kan dienen
