@@ -3,6 +3,7 @@
 ## Handson ArgoCD
 ### Prereqs
 - Github toegang tot https://github.com/BDelleman/gitops-conclusion-code-cafe --> Geef je GitHub username door aan Bart
+- Toegang tot OpenShift --> check even de lijst met users in de [clusterconfig folder](./clusterconfig/values.yaml), password staat in de presentatie. Indien je er nog niet in staat geef dit even aan.
 
 ### Opzetten source folder
 - Kopieer de inhoud van de demo folder en plaats deze in een nieuwe folder onder handson/apps. Vernoem de nieuwe folder naar jezelf
