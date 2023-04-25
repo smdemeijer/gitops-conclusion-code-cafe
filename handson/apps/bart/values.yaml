@@ -1,4 +1,4 @@
-namespace: dennisvandenboom
+namespace: bartdelleman
 monsterReplicas: 1
 images:
   monsterImage: image-registry.openshift-image-registry.svc:5000/doom-images/monster@sha256:ee3ccf1a93b1ea42f3caa9bb44dbf8bfd8a84a9d6585f6a204ef20cb72d16c64
