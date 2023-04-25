@@ -20,7 +20,7 @@
 	- Application name: verzin een unieke, herkenbare naam
 	- Project name: default
 	- Repository URL: kies uit de dropdown de github repo
-	- Path: path naar jouw folder in de repo -> handson/apps/<jouw folder>
+	- Path: path naar jouw folder in de repo -> handson/apps/..
 	- Cluster URL: https://kubernetes.default.svc
 	- Dropdown waar default 'Directory' staat: kies Helm
 	- Values files: values.yaml
