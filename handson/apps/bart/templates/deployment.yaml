@@ -1,0 +1,43 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  annotations:
+    image.openshift.io/triggers: >-
+      [{"from":{"kind":"ImageStreamTag","name":"ocpdoom:latest"},"fieldPath":"spec.template.spec.containers[?(@.name==\"ocpdoom\")].image"}]
+  name: ocpdoom
+  namespace: {{ .Values.namespace }}
+  labels:
+    app: ocpdoom
+    app.kubernetes.io/component: ocpdoom
+    app.kubernetes.io/instance: ocpdoom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      deployment: ocpdoom
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        deployment: ocpdoom
+    spec:
+      containers:
+        - name: ocpdoom
+          image: {{ .Values.images.doomImage }}
+          env:
+            - name: NAMESPACE
+              value: {{ .Values.namespace}}-monsters
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          imagePullPolicy: IfNotPresent
+      restartPolicy: Always
+      serviceAccountName: doomguy
+      serviceAccount: doomguy
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 25%
+      maxSurge: 25%
+  revisionHistoryLimit: 10
+  progressDeadlineSeconds: 600
